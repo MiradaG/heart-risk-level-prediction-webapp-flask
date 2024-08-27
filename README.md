@@ -3,3 +3,8 @@ A web application developed with Python and Flask to predict heart risk levels u
 created a webapp using cardio dataset.
 back end code is in main.py
 to run the code,in anaconda prompt run 'python main.py' in the relevant folder.
+
+## to fire up the flask server file, main.py
+python main.py
+## .html file runs in the port
+http://127.0.0.1:5000
