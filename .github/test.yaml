@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: Combined API Specification
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: Render the patient details form
+      description: Returns the HTML form for entering patient details.
+      responses:
+        '200':
+          description: Success. Returns the HTML form.
+          content:
+            text/html:
+              schema:
+                type: string
+  /getresults:
+    post:
+      summary: Predict heart disease risk level
+      description: Predicts the heart disease risk level based on the provided patient
+        details.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Patient's name
+                gender:
+                  type: number
+                  format: float
+                  description: Patient's gender (0 for male, 1 for female)
+                age:
+                  type: number
+                  format: float
+                  description: Patient's age
+                tc:
+                  type: number
+                  format: float
+                  description: Total Cholesterol (mg/dL)
+                hdl:
+                  type: number
+                  format: float
+                  description: High-density Lipoprotein (mg/dL)
+                smoke:
+                  type: number
+                  format: float
+                  description: Smoking status (1 for yes, 0 for no)
+                bpm:
+                  type: number
+                  format: float
+                  description: Blood Pressure Medication (0 for not taking, 1 for
+                    taking)
+                diab:
+                  type: number
+                  format: float
+                  description: Diabetes status (1 for yes, 0 for no)
+              required:
+              - name
+              - gender
+              - age
+              - tc
+              - hdl
+              - smoke
+              - bpm
+              - diab
+      responses:
+        '200':
+          description: Success. Returns the predicted risk level.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: HTML content of the patient_results.html page.
+components:
+  schemas: {}
